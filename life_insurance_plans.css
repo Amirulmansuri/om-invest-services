@@ -1,0 +1,266 @@
+/* Filename: life-insurance-plans.css */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f7f6; /* Light background for the page */
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Page Header */
+.page-header {
+    background-color: #ffffff; /* White background for header */
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo-container .logo-img {
+    height: 50px; /* Adjust as needed */
+    width: auto;
+
+}
+
+.logo-container h1 {
+    font-size: 1.8em;
+    color: #005a9e; /* A corporate blue */
+    margin: 0;
+}
+
+.back-button {
+    text-decoration: none;
+    color: #007bff;
+    font-size: 1em;
+    font-weight: bold;
+    padding: 8px 15px;
+    border: 1px solid #007bff;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.back-button:hover {
+    background-color: #007bff;
+    color: #fff;
+}
+
+/* Plans Page Content */
+.plans-page-content {
+    padding: 30px 20px;
+    max-width: 1200px;
+    margin: 0 auto; /* Center content */
+}
+
+.plans-header-section {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.main-title {
+    font-size: 2.5em;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.title-divider {
+    width: 80px;
+    height: 3px;
+    background-color: #007bff;
+    border: none;
+    margin: 0 auto;
+}
+
+/* Plans Grid */
+.plans-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid */
+    gap: 30px;
+    justify-content: center;
+}
+
+.plan-card {
+    background-color: #f9f9f9; /* Slightly off-white for cards, similar to image */
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    border: 1px solid #e0e0e0; /* Light border for definition */
+}
+
+.plan-card-header {
+    font-size: 0.8em;
+    font-weight: bold;
+    color: #555; /* Dark gray for the header text */
+    text-align: center;
+    padding: 8px 0;
+    background-color: #e7e7e7; /* Light gray background for header, as in image */
+    border-bottom: 1px solid #d0d0d0;
+    margin: -20px -20px 15px -20px; /* Extend to card edges */
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.plan-name {
+    font-size: 1.4em;
+    font-weight: bold;
+    color: #000; /* Black for plan name, as in image */
+    margin-bottom: 15px;
+    text-align: center; /* Center plan name */
+    min-height: 60px; /* Ensure space for two-line titles */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.plan-features {
+    list-style: none; /* Remove default bullets */
+    padding-left: 0; /* Remove default padding */
+    margin-bottom: 20px;
+    font-size: 0.95em;
+    color: #444; /* Darker gray for features */
+    flex-grow: 1; /* Pushes button to the bottom */
+}
+
+.plan-features li {
+    padding: 8px 0;
+    border-bottom: 1px dashed #d0d0d0; /* Dashed separator */
+    position: relative;
+    padding-left: 20px; /* Space for custom bullet */
+}
+
+.plan-features li:last-child {
+    border-bottom: none;
+}
+
+.plan-features li::before {
+    content: '\2713'; /* Checkmark symbol */
+    color: #28a745; /* Green checkmark */
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+    top: 8px;
+}
+
+.plan-details-btn {
+    background-color: #007bff;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    align-self: center; /* Center button */
+    margin-top: auto; /* Pushes button to bottom if content is short */
+}
+
+.plan-details-btn:hover {
+    background-color: #0056b3;
+}
+
+/* Page Footer */
+.page-footer {
+    background-color: #333; /* Dark footer */
+    color: #f0f0f0;
+    text-align: center;
+    padding: 20px;
+    font-size: 0.85em;
+    margin-top: 40px;
+}
+
+.page-footer p {
+    margin: 5px 0;
+}
+
+/* Responsive Design for Life Insurance Plans Page */
+
+/* Tablet (e.g., max-width: 1024px) */
+@media (max-width: 1024px) {
+    .main-title {
+        font-size: 2.2em;
+    }
+    .plans-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 25px;
+    }
+    .plan-name {
+        font-size: 1.3em;
+        min-height: 50px;
+    }
+    .plan-features {
+        font-size: 0.9em;
+    }
+    .page-header {
+        padding: 15px 20px;
+    }
+}
+
+/* Mobile (e.g., max-width: 767px) */
+@media (max-width: 767px) {
+    .page-header {
+        flex-direction: column;
+        align-items: center;
+        padding: 15px;
+    }
+    .logo-container {
+        margin-bottom: 10px;
+    }
+    .logo-container .logo-img {
+        height: 40px;
+    }
+    .back-button {
+        width: 100%;
+        text-align: center;
+        margin-top: 10px;
+    }
+    .main-title {
+        font-size: 1.8em;
+    }
+    .plans-grid {
+        grid-template-columns: 1fr; /* Single column on mobile */
+        gap: 20px;
+    }
+    .plan-card {
+        padding: 15px;
+    }
+    .plan-card-header {
+        margin: -15px -15px 10px -15px; /* Adjust for smaller padding */
+    }
+    .plan-name {
+        font-size: 1.2em;
+        min-height: auto; /* Allow height to adjust */
+    }
+    .plan-features {
+        font-size: 0.85em;
+    }
+    .plan-features li {
+        padding-left: 18px; /* Adjust for smaller text */
+    }
+    .plan-features li::before {
+        top: 7px;
+    }
+    .plan-details-btn {
+        padding: 10px 18px;
+        font-size: 0.95em;
+        width: 100%; /* Make button full width */
+    }
+    .plans-page-content {
+        padding: 20px 15px;
+    }
+}
+
+/* logo and back button swap */
+
+/* Desktop view only (min-width: 1025px) */
+@media (min-width: 1025px) {
+    .page-header {
+        flex-direction: row-reverse; /* Swap logo and back button */
+    }
+}

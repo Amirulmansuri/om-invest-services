@@ -1,0 +1,2586 @@
+/* Basic Reset & Body Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+/* Navbar Container */
+
+/* Header */
+
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 5%;
+  background-color: white;
+  flex-wrap: wrap;
+  border-bottom: 1px solid #ddd;
+}
+
+.header-left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+}
+
+.logo {
+  height: 80px;
+}
+
+.brand-name {
+  font-weight: bold;
+  font-size: 16px;
+  color: #0056b3;
+  text-align: center;
+}
+
+/* Navigation */
+.nav-links {
+  display: flex;
+  gap: 30px;
+  font-weight: 500;
+  justify-content: center;
+  flex: 1;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #333;
+  font-size: 16px;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: #0056b3;
+}
+
+.nav-links a::after {
+  content: '';
+  display: block;
+  height: 2px;
+  background-color: #0056b3;
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+  transform-origin: left;
+}
+
+.nav-links a:hover::after {
+  transform: scaleX(1);
+}
+
+/* Right section */
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+/* Style for Inquiry Button as a link */
+.inquiry-btn {
+    display: inline-block;
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.inquiry-btn:hover {
+    background-color: #0056b3;
+    transform: scale(1.05); /* slight zoom on hover */
+}
+
+.hamburger {
+  display: none;
+  font-size: 26px;
+  cursor: pointer;
+}
+
+/* Mobile Menu */
+.mobile-menu {
+  display: none;
+  flex-direction: column;
+  background-color: #fff;
+  padding: 10px 20px;
+  border-top: 1px solid #ccc;
+}
+
+.mobile-menu a {
+  padding: 10px 0;
+  color: #333;
+  text-decoration: none;
+  border-bottom: 1px solid #eee;
+  transition: color 0.3s ease;
+}
+
+.mobile-menu a:hover {
+  color: #0056b3;
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+  .header {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .header-left {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .nav-links {
+    display: none;
+  }
+
+  .inquiry-btn {
+    display: none;
+  }
+
+  .hamburger {
+    display: block;
+  }
+
+  .mobile-menu.active {
+    display: flex;
+  }
+}
+
+
+/* Slide bar */
+
+
+
+.hero-section {
+    position: relative;
+    width: 100%;
+    height: 100vh; /* Default height for larger screens */
+    overflow: hidden;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center; /* Vertically center content by default */
+    color: white;
+    text-align: left;
+}
+
+.slide-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover; /* Ensures the image covers the entire container */
+    background-position: center center; /* Default: centers the image */
+    transition: background-image 1s ease-in-out;
+    filter: brightness(0.6);
+    z-index: 1;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 2;
+}
+
+.content {
+    position: relative;
+    z-index: 3;
+    padding: 20px;
+    max-width: 900px;
+    box-sizing: border-box;
+    margin-left: 5%;
+    margin-right: auto;
+}
+
+.slogan-container {
+    font-size: 3em;
+    font-weight: 700;
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+.om-text {
+    color: #007bff;
+}
+
+.typing-text {
+    display: inline-block;
+    min-width: 350px;
+    border-right: 2px solid white;
+    white-space: nowrap;
+    overflow: hidden;
+    vertical-align: middle;
+}
+
+.slide-text-container {
+    min-height: 150px;
+    margin-bottom: 30px;
+}
+
+.slide-text {
+    font-size: 2.8em;
+    font-weight: 700;
+    line-height: 1.4;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.slide-text.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.welcome-dynamic-text {
+    font-size: 1.1em;
+    margin-bottom: 40px;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.welcome-dynamic-text.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.btn {
+    display: inline-block;
+    background-color: #007bff;
+    color: white;
+    padding: 15px 30px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 700;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+    .slogan-container {
+        font-size: 1.6em;
+    }
+
+    .slide-text {
+        font-size: 2.4em;
+    }
+
+    /* Adjust hero-section height for tablets and smaller desktops */
+    .hero-section {
+        height: 85vh; /* Reduce height slightly */
+    }
+}
+
+@media (max-width: 768px) {
+    .content {
+        margin-left: 5%;
+        margin-right: 5%;
+        padding-top: 0; /* Reset content padding if hero-section padding is used */
+        padding-bottom: 0; /* Reset content padding if hero-section padding is used */
+    }
+
+    .slogan-container {
+        font-size: 1.4em;
+    }
+
+    .typing-text {
+        min-width: 280px;
+    }
+
+    .slide-text {
+        font-size: 2em;
+    }
+
+    .welcome-dynamic-text {
+        font-size: 1em;
+    }
+
+    .btn {
+        padding: 12px 25px;
+    }
+
+    /* Key changes for mobile responsiveness of the hero section and background image */
+    .hero-section {
+        height: auto; /* Allow content to dictate height */
+        min-height: 70vh; /* Ensure a minimum height for visual appeal on mobiles */
+        padding-top: 80px; /* Add top padding to push content down */
+        padding-bottom: 80px; /* Add bottom padding to ensure content doesn't get cut off */
+        align-items: flex-start; /* Align content to the top within the flexible height */
+    }
+
+    .slide-background {
+        /* On mobile, adjust background position to prioritize the top part of the image */
+        background-position: center top; /* OR '50% 0%' to ensure the top of the image is visible */
+        background-size: cover; /* Ensure it still covers the area */
+    }
+}
+
+@media (max-width: 480px) {
+    .content {
+        padding: 15px;
+        margin-left: 3%;
+        margin-right: 3%;
+    }
+    .slogan-container {
+        font-size: 1.03em;
+    }
+
+    .typing-text {
+        min-width: 180px;
+    }
+
+    .slide-text {
+        font-size: 1.6em;
+        line-height: 1.3;
+    }
+
+    .welcome-dynamic-text {
+        font-size: 0.9em;
+    }
+
+    .btn {
+        padding: 10px 20px;
+        font-size: 0.9em;
+    }
+
+    .slide-text-container {
+        min-height: 120px;
+    }
+
+    /* Further adjustments for very small mobile screens */
+    .hero-section {
+        min-height: 60vh; /* Slightly smaller minimum height */
+        padding-top: 60px;
+        padding-bottom: 60px;
+    }
+
+    .slide-background {
+        background-position: center top; /* Keep top-aligned for very small screens */
+    }
+}
+
+
+
+
+/* Card Section */
+
+/* Cards Section Styles */
+.cards-section {
+    background-color: #f0f0f0; /* Light gray background as in the image */
+    padding: 60px 20px; /* Adjust padding as needed */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 50vh; /* Ensure it takes up enough vertical space */
+}
+
+.cards-container {
+    display: flex;
+    flex-wrap: wrap; /* Allow cards to wrap to the next line on smaller screens */
+    gap: 30px; /* Space between cards */
+    justify-content: center; /* Center cards when they wrap */
+    max-width: 1200px; /* Limit overall width */
+    width: 100%;
+}
+
+.card {
+    background-color: #ffffff; /* White background for cards */
+    border-radius: 15px; /* General rounded corners */
+    padding: 30px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); /* Subtle shadow */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Align content to the left within the card */
+    text-align: left;
+    flex: 1; /* Allow cards to grow and shrink */
+    min-width: 280px; /* Minimum width for cards before wrapping */
+    max-width: 350px; /* Maximum width for cards */
+    position: relative; /* For icon positioning */
+}
+
+.card-icon-wrapper {
+    background-color: #e0e0e0; /* Gray background for the icon circle */
+    border-radius: 50%; /* Make it a circle */
+    width: 60px; /* Size of the circle */
+    height: 60px; /* Size of the circle */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute; /* Position relative to the card */
+    top: -30px; /* Half of its height to be outside the card */
+    left: 20px; /* Adjust left positioning */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Shadow for the icon circle */
+}
+
+.card-icon {
+    width: 30px; /* Size of the icon image inside the circle */
+    height: 30px; /* Size of the icon image inside the circle */
+    object-fit: contain; /* Ensure image fits */
+}
+
+.card-title {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #333;
+    margin-top: 40px; /* Space from the top to account for the icon */
+    margin-bottom: 10px;
+}
+
+.card-description {
+    font-size: 1em;
+    color: #666;
+    line-height: 1.5;
+}
+
+/* Responsive Design for Cards Section */
+
+/* Tablet adjustments */
+@media (max-width: 1024px) {
+    .cards-container {
+        gap: 25px;
+    }
+    .card {
+        min-width: 250px;
+        max-width: 320px;
+        padding: 25px;
+    }
+    .card-icon-wrapper {
+        width: 55px;
+        height: 55px;
+        top: -27.5px;
+        left: 15px;
+    }
+    .card-icon {
+        width: 28px;
+        height: 28px;
+    }
+    .card-title {
+        font-size: 1.4em;
+        margin-top: 35px;
+    }
+    .card-description {
+        font-size: 0.95em;
+    }
+}
+
+/* Mobile adjustments */
+@media (max-width: 767px) {
+    .cards-section {
+        padding: 40px 15px;
+    }
+    .cards-container {
+        flex-direction: column; /* Stack cards vertically on mobile */
+        align-items: center; /* Center stacked cards */
+        gap: 20px;
+    }
+    .card {
+        width: 90%; /* Make cards take almost full width */
+        max-width: 350px; /* Ensure they don't get too wide on small screens */
+        padding: 20px;
+        min-width: unset; /* Remove min-width for mobile */
+    }
+    .card-icon-wrapper {
+        width: 50px;
+        height: 50px;
+        top: -25px;
+        left: 50%; /* Center the icon for mobile */
+        transform: translateX(-50%); /* Adjust for centering */
+    }
+    .card-icon {
+        width: 25px;
+        height: 25px;
+    }
+    .card-title {
+        font-size: 1.3em;
+        margin-top: 30px;
+        text-align: center; /* Center title on mobile */
+        width: 100%; /* Ensure title takes full width for centering */
+    }
+    .card-description {
+        font-size: 0.9em;
+        text-align: center; /* Center description on mobile */
+    }
+}
+
+/* about us section */
+
+/* About Us Section Styles */
+.about-us-section {
+    padding: 60px 20px;
+    background-color: #f8f8f8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 70vh;
+}
+
+.about-us-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 50px; /* Increased gap to potentially give sticker more room */
+    max-width: 1200px;
+    width: 100%;
+    align-items: flex-start;
+}
+
+.about-us-image-wrapper {
+    flex: 1 1 500px;
+    position: relative;
+    /* overflow, border-radius, box-shadow removed as per previous step */
+}
+
+.about-us-main-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); /* Applied here */
+}
+
+.experience-sticker {
+    position: absolute;
+    bottom: 20px;
+    right: -35px; /* *** CRITICAL: ADJUST THIS VALUE *** */
+                  /* Try -20px, -15px, etc., until it's fully visible and half-out */
+    background-color: #110479;
+    color: #fff;
+    padding: 8px 15px; /* Smaller padding */
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    z-index: 5;
+}
+
+.experience-years {
+    font-size: 1.6em; /* Smaller font size */
+    line-height: 1;
+}
+
+.experience-text {
+    font-size: 0.7em; /* Smaller font size */
+    white-space: nowrap;
+}
+
+
+.about-us-content {
+    flex: 1 1 500px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.about-company-tag {
+    font-size: 0.9em;
+    color: #777;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+}
+
+.about-company-divider {
+    width: 60px;
+    height: 3px;
+    background-color: #110479;
+    border: none;
+    margin-bottom: 20px;
+    margin-left: 0;
+}
+
+.about-company-text {
+    font-size: 1.1em;
+    color: #333;
+    line-height: 1.8;
+    margin-bottom: 30px;
+    text-align: justify;
+}
+
+.about-us-button {
+    display: inline-block;
+    background-color: #110479;
+    color: #fff;
+    padding: 12px 25px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1em;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    align-self: flex-start;
+}
+
+.about-us-button:hover {
+    background-color: #303f9f;
+    transform: translateY(-2px);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1024px) {
+    .about-us-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 30px; /* Adjusted gap for smaller screens */
+    }
+
+    .about-us-image-wrapper,
+    .about-us-content {
+        flex: 1 1 100%;
+        max-width: 700px;
+    }
+
+    .about-us-image-wrapper {
+        height: 400px;
+    }
+
+    .experience-sticker {
+        bottom: 15px;
+        right: -15px; /* *** ADJUST THIS VALUE for tablets *** */
+        padding: 6px 12px;
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+    .experience-years {
+        font-size: 1.4em;
+    }
+    .experience-text {
+        font-size: 0.6em;
+    }
+}
+
+@media (max-width: 768px) {
+    .about-us-section {
+        padding: 40px 15px;
+    }
+
+    .about-us-container {
+        gap: 20px; /* Adjusted gap for smaller screens */
+    }
+
+    .about-us-image-wrapper {
+        height: 300px;
+    }
+
+    .about-us-content {
+        padding: 15px;
+    }
+
+    .about-company-text {
+        font-size: 1em;
+        line-height: 1.7;
+    }
+
+    .about-us-button {
+        padding: 10px 20px;
+        font-size: 0.9em;
+    }
+}
+
+@media (max-width: 480px) {
+    .about-us-image-wrapper {
+        height: 250px;
+    }
+
+    .experience-sticker {
+        bottom: 10px;
+        right: -10px; /* *** ADJUST THIS VALUE for mobiles *** */
+        padding: 5px 10px;
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+    .experience-years {
+        font-size: 1.2em;
+    }
+    .experience-text {
+        font-size: 0.55em;
+    }
+
+    .about-company-tag {
+        font-size: 0.8em;
+    }
+
+    .about-company-text {
+        font-size: 0.95em;
+        margin-bottom: 20px;
+    }
+}
+
+/* Insurance Services Section */
+
+
+/* Services Header Section */
+.services-page-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+.services-header {
+    text-align: left;
+    margin-bottom: 50px;
+    padding-top: 20px; /* Space from header if present */
+}
+
+
+
+.section-tag {
+    font-size: 1em;
+    color: #110479;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.section-divider {
+    border: none;
+    border-top: 1px solid #110479;
+    width: 100%; /* Spans the full width */
+    margin: 10px 0 20px 0;
+}
+
+.section-title {
+    font-size: 2.5em;
+    font-weight: bold;
+    color: #333;
+    line-height: 1.2;
+    margin-bottom: 0;
+}
+
+/* Insurance Cards Grid */
+.insurance-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive grid */
+    gap: 30px;
+    justify-content: center;
+    margin-bottom: 60px;
+}
+
+.insurance-card {
+    background-color: #fff;
+    border-radius: 15px; /* Rounded corners for the card */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    overflow: hidden; /* Ensures image and icon don't overflow corners */
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.card-top {
+    position: relative; /* For icon positioning */
+    width: 100%;
+    height: 180px; /* Fixed height for the image area */
+    /* background-color: #f0f0f0; Fallback/background for image area */
+    display: flex; /* For centering the image if it's smaller */
+    justify-content: center;
+    align-items: center;
+    /* border-top-left-radius: 15px; Match card radius */
+    /* border-top-right-radius: 15px; Match card radius */
+}
+
+/* This is the key for the rounded top-left corner as in the image */
+.card-top::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: inherit; /* Inherit the background of .card-top */
+    border-top-left-radius: 15px; /* Apply the radius here */
+    z-index: 1; /* Below icon */
+}
+
+.card-icon-circle {
+    background-color: #f0f0f0; /* Gray circle for the small icon */
+    border-radius: 50%;
+    width: 50px; /* Size of the circle */
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 15px; /* Distance from top of the image area */
+    left: 20px; /* Distance from left of the image area */
+    z-index: 2; /* On top of the image */
+}
+
+.card-small-icon {
+    width: 28px; /* Size of the icon inside the circle */
+    height: 28px;
+    object-fit: contain;
+}
+
+.card-service-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Cover the entire area without distortion */
+    /* border-top-left-radius: 15px; Ensure image also has the top-left radius */
+    /* border-top-right-radius: 15px; */
+    position: relative; /* Allow z-index to work */
+    z-index: 0; /* Below the icon circle */
+}
+
+.insurance-card h2 {
+    font-size: 1.35em;
+    font-weight: bold;
+    color: #333;
+    padding: 15px 20px 10px;
+    margin: 0;
+}
+
+.insurance-card p {
+    font-size: 0.95em;
+    color: #666;
+    padding: 0 20px 20px;
+    margin: 0;
+    flex-grow: 1; /* Allow text to grow and push button to bottom */
+}
+
+.explore-btn {
+    background-color: #007bff;
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    align-self: flex-start; /* Align button to left within card */
+    margin: 0 20px 20px; /* Spacing from bottom and sides */
+}
+
+.explore-btn:hover {
+    background-color: #0056b3;
+}
+
+/* Disclaimer Section */
+.disclaimer-section {
+    background-color: #f0f0f0; /* Same as body background */
+    padding: 40px 20px;
+    text-align: left;
+    border-top: 1px solid #ddd;
+    margin-top: 30px;
+}
+
+.disclaimer-title {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #FF0606;
+    margin-bottom: 10px;
+}
+
+.disclaimer-divider {
+    border: none;
+    border-top: 1px solid #FF0606;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.disclaimer-text {
+    font-size: 0.9em;
+    font-weight: bold;
+    color: #333333;
+    line-height: 1.8;
+}
+
+
+/* Responsive Design for Services Page */
+
+/* Tablet (e.g., max-width: 1024px) */
+@media (max-width: 1024px) {
+    .section-title {
+        font-size: 2em;
+    }
+    .insurance-cards-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 25px;
+    }
+    .insurance-card {
+        max-width: 400px; /* Prevent cards from getting too wide in 2-column layout */
+        margin: 0 auto; /* Center cards if fewer than expected in a row */
+    }
+    .card-top {
+        height: 160px;
+    }
+    .card-icon-circle {
+        width: 45px;
+        height: 45px;
+        top: 12px;
+        left: 15px;
+    }
+    .card-small-icon {
+        width: 25px;
+        height: 25px;
+    }
+    .insurance-card h2 {
+        font-size: 1.25em;
+        padding: 12px 15px 8px;
+    }
+    .insurance-card p {
+        font-size: 0.9em;
+        padding: 0 15px 15px;
+    }
+    .explore-btn {
+        padding: 10px 20px;
+        font-size: 0.95em;
+        margin: 0 15px 15px;
+    }
+    .disclaimer-section {
+        padding: 30px 15px;
+    }
+    .disclaimer-text {
+        font-size: 0.85em;
+    }
+}
+
+/* Mobile (e.g., max-width: 767px) */
+@media (max-width: 767px) {
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 15px;
+    }
+    .nav-links {
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+        margin-top: 15px;
+    }
+    .nav-links li {
+        width: 100%;
+    }
+    .nav-links a {
+        display: block;
+        padding: 8px 0;
+        text-align: center;
+        background-color: #f9f9f9;
+        border-radius: 5px;
+    }
+    .nav-links a:hover {
+        background-color: #eee;
+    }
+
+    .services-page-content {
+        padding: 20px 15px;
+    }
+    .services-header {
+        margin-bottom: 30px;
+    }
+    .section-tag {
+        font-size: 0.9em;
+    }
+    .section-title {
+        font-size: 1.8em;
+    }
+    .insurance-cards-grid {
+        grid-template-columns: 1fr; /* Single column on mobile */
+        gap: 20px;
+    }
+    .insurance-card {
+        width: 100%; /* Take full width on mobile */
+        max-width: unset; /* Remove max-width constraint */
+    }
+    .card-top {
+        height: 150px;
+    }
+    .card-icon-circle {
+        width: 40px;
+        height: 40px;
+        top: 10px;
+        left: 10px;
+    }
+    .card-small-icon {
+        width: 22px;
+        height: 22px;
+    }
+    .insurance-card h2 {
+        font-size: 1.2em;
+        padding: 10px 15px 5px;
+    }
+    .insurance-card p {
+        font-size: 0.85em;
+        padding: 0 15px 15px;
+    }
+    .explore-btn {
+        padding: 8px 18px;
+        font-size: 0.9em;
+        margin: 0 15px 15px;
+    }
+    .disclaimer-section {
+        padding: 20px 15px;
+    }
+    .disclaimer-title {
+        font-size: 1.1em;
+    }
+    .disclaimer-text {
+        font-size: 0.8em;
+    }
+}
+
+
+/* Financial Services */
+
+/* Financial Services Section Styles */
+
+.financial-header {
+    margin-top: 60px; /* Adjust as needed for spacing from the previous section */
+    margin-left: 20px;
+}
+
+.financial-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.financial-card {
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    transition: transform 0.3s ease;
+    padding-bottom: 20px; /* Added for better spacing below lists */
+}
+
+.financial-card:hover {
+    transform: translateY(-5px);
+}
+
+.financial-card .card-top {
+    position: relative;
+    width: 100%;
+    height: 180px; /* Fixed height for consistency */
+    overflow: hidden;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+.financial-card .card-service-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.financial-card .card-icon-circle {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+}
+
+.financial-card .card-small-icon {
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+}
+
+.financial-card .card-heading {
+    font-size: 1.5em;
+    color: #333;
+    margin: 20px 20px 10px 20px; /* Adjusted margin for better spacing */
+    font-weight: 600;
+}
+
+.financial-card .card-list {
+    list-style: none; /* Remove default bullet points */
+    padding: 0 20px;
+    margin: 0;
+    color: #555;
+    font-size: 1em;
+    line-height: 1.6;
+}
+
+.financial-card .card-list li {
+    margin-bottom: 5px;
+}
+
+.financial-disclaimer {
+    margin-top: 60px; /* Adjust as needed for spacing */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .financial-cards-grid {
+        grid-template-columns: 1fr; /* Single column on smaller screens */
+        padding: 15px;
+    }
+
+    .financial-card .card-heading {
+        font-size: 1.3em;
+        margin: 15px 15px 8px 15px;
+    }
+
+    .financial-card .card-list {
+        font-size: 0.95em;
+        padding: 0 15px;
+    }
+
+    .financial-card .card-top {
+        height: 150px;
+    }
+}
+
+@media (max-width: 480px) {
+    .financial-header .section-title {
+        font-size: 1.8em;
+    }
+
+    .financial-card .card-top {
+        height: 120px;
+    }
+
+    .financial-card .card-heading {
+        font-size: 1.2em;
+    }
+
+    .financial-card .card-list {
+        font-size: 0.9em;
+    }
+}
+
+
+/* expert fields *//*
+    CSS for the specific "Expert Field" section from your image.
+    Add this to your existing style.css file.
+*/
+
+/* Container for the entire expert field section */
+.expert-field-container {
+    width: 100%;
+    min-height: 100vh; /* Takes full viewport height */
+    display: flex;
+    align-items: center; /* Vertically center content */
+    /* Background gradient matching your image */
+    background: linear-gradient(to right, #001f3f, #00004d, #000033);
+    padding: 60px 20px; /* Adjust padding as needed */
+    color: #fff; /* Text color for this section */
+    overflow: hidden; /* Important for kite shape */
+}
+
+.expert-field-content-wrapper {
+    width: 90%;
+    max-width: 1200px; /* Max width for desktop */
+    margin: 0 auto; /* Center the container */
+    display: flex;
+    flex-wrap: wrap; /* Allows items to wrap on smaller screens */
+    gap: 40px; /* Space between left and right content */
+    align-items: center;
+    justify-content: center; /* Center content on smaller screens */
+}
+
+/* Left content area */
+.expert-field-left {
+    flex: 1; /* Allows it to take available space */
+    min-width: 300px; /* Minimum width before wrapping */
+    padding-right: 20px; /* Space from the right image on desktop */
+    text-align: left; /* Default text alignment */
+}
+
+.expert-field-subtitle {
+    font-size: 0.9em;
+    color: #a0a0a0;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.expert-field-separator-line {
+    width: 80px; /* Length of the line */
+    height: 3px;
+    background-color: #007bff;
+    margin-bottom: 20px;
+}
+
+.expert-field-title {
+    font-size: 2.8em;
+    font-weight: bold;
+    margin-bottom: 40px;
+    line-height: 1.2;
+    color: #ffffff; /* Ensure heading is white */
+}
+
+/* Services Grid for the expert field section */
+.expert-field-services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Responsive grid */
+    gap: 20px; /* Space between cards */
+}
+
+/* Individual Service Card within the expert field section */
+.expert-field-service-card {
+    background-color: rgba(255, 255, 255, 0.1); /* Slightly transparent white */
+    border-radius: 8px;
+    padding: 25px;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 150px; /* Ensure cards have a minimum height */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle initial shadow */
+    text-decoration: none; /* Remove underline from link */
+}
+
+.expert-field-service-card:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-5px); /* Slight lift on hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
+}
+
+.expert-field-service-card i {
+    font-size: 2.5em;
+    color: #ffffff; /* Icon color */
+    margin-bottom: 15px;
+}
+
+.expert-field-service-card p {
+    font-size: 1.1em;
+    font-weight: 500;
+    color: #e0e0e0; /* Slightly off-white for card text */
+}
+
+/* Right Content - Kite Shape Image for the expert field section */
+.expert-field-right {
+    flex: 1; /* Allows it to take available space */
+    display: flex;
+    justify-content: center; /* Center the kite shape */
+    align-items: center; /* Vertically center the kite shape */
+    position: relative; /* Needed for positioning */
+    min-width: 300px; /* Minimum width before wrapping */
+}
+
+.expert-field-kite-shape {
+    width: 350px; /* Base width */
+    height: 350px; /* Base height */
+    position: relative;
+    overflow: hidden; /* Hide parts of the image outside the shape */
+    transform: rotate(45deg); /* Rotate to form the kite */
+    border-radius: 15px; /* Slight rounded corners for the kite */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); /* Add some shadow */
+    background-color: #000033; /* Fallback/background for the shape */
+}
+
+.expert-field-kite-shape img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Cover the shape without distorting image */
+    position: absolute;
+    /* top: 50%; */
+    /* left: 50%; */
+    /* Counter-rotate and scale up image to fill the rotated div, then center */
+    transform: rotate(-45deg) scale(1.5);
+    transform-origin: center center;
+}
+
+/* --- Media Queries for Responsiveness for THIS SECTION ONLY --- */
+
+/* Tablets (landscape) and smaller desktops */
+@media (max-width: 1024px) {
+    .expert-field-title {
+        font-size: 2.4em;
+    }
+    .expert-field-kite-shape {
+        width: 320px;
+        height: 320px;
+    }
+}
+
+/* Tablets (portrait) and larger phones */
+@media (max-width: 768px) {
+
+    .expert-field-container {
+        padding: 60px 20px;
+        min-height: auto;
+    }
+
+    .expert-field-content-wrapper {
+        flex-direction: column; /* Stack items vertically */
+        text-align: center; /* Center text content */
+        gap: 40px;
+    }
+
+    .expert-field-left {
+        padding-right: 0;
+        width: 100%;
+        text-align: center;
+    }
+
+    .expert-field-separator-line {
+        margin: 0 auto 20px auto; /* Center the line */
+    }
+
+    .expert-field-title {
+        font-size: 2em;
+        margin-bottom: 30px;
+    }
+
+    .expert-field-services-grid {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        justify-content: center;
+    }
+
+    .expert-field-service-card {
+        padding: 20px;
+        min-height: unset;
+    }
+
+    .expert-field-right {
+        width: 100%;
+        padding: 30px 0; /* Adjusted padding to remove horizontal space */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        /* Increased min-height to ensure the kite has enough space */
+        min-height: 300px;
+    }
+
+    .expert-field-kite-shape {
+        width: 280px; /* Fixed width for better control */
+        height: 280px; /* Fixed height for better control */
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        transform: rotate(45deg);
+        /* Ensure it's centered */
+        margin: 0 auto;
+    }
+
+    .expert-field-kite-shape img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        position: absolute;
+        /* Adjusted scale and position for better coverage on mobile */
+        transform: rotate(-45deg) scale(1.6); /* Slightly reduced scale if 1.8 was too much */
+        transform-origin: center center;
+        /* You might need to fine-tune top/left percentages if the image is slightly off-center */
+        top: 0%; /* Start from top */
+        left: 0%; /* Start from left */
+    }
+}
+
+/* Mobile phones */
+@media (max-width: 480px) {
+    .expert-field-container {
+        padding: 40px 15px;
+    }
+
+    .expert-field-subtitle {
+        font-size: 0.8em;
+    }
+
+    .expert-field-title {
+        font-size: 1.6em;
+        margin-bottom: 25px;
+    }
+
+    .expert-field-services-grid {
+        grid-template-columns: 1fr; /* Stack cards vertically on very small screens */
+    }
+
+    .expert-field-service-card {
+        padding: 15px;
+    }
+
+    .expert-field-service-card i {
+        font-size: 2em;
+        margin-bottom: 10px;
+    }
+
+    .expert-field-service-card p {
+        font-size: 1em;
+    }
+
+    .expert-field-right {
+        padding: 20px 0; /* Reduced padding for smaller screens */
+        min-height: 250px; /* Adjusted min-height */
+    }
+
+    .expert-field-kite-shape {
+        width: 240px; /* Smaller kite size for very small phones */
+        height: 240px;
+    }
+
+    .expert-field-kite-shape img {
+        /* Potentially need even more scale for smallest screens to cover all corners */
+        transform: rotate(-45deg) scale(1.7); /* Fine-tuned scale for smaller phones */
+    }
+}
+
+/* achievement  */
+
+
+.achievements-section {
+    padding: 60px 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.achievements-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* Heading and Separator */
+.achievements-heading {
+    font-size: 2em;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+
+.achievements-separator-line {
+    width: 120px;
+    height: 3px;
+    background-color: #007bff;
+    margin: 0 auto 50px auto;
+}
+
+/* Awards Grid */
+.awards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 40px;
+    justify-content: center;
+}
+
+/* Individual Award Item */
+.award-item {
+    display: flex;
+    align-items: flex-start;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: left;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.award-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+/* Default styles for all award image wrappers (for images 3-6) */
+.award-image-wrapper {
+    flex-shrink: 0;
+    width: 150px; /* Default width for rectangular awards */
+    height: 120px; /* Default height for rectangular awards */
+    margin-right: 20px;
+    overflow: hidden;
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #e0e0e0; /* Light grey background to fill empty space */
+}
+
+.award-image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Crucial for showing full image without cropping */
+    display: block;
+}
+
+/* Specific Styles for the first two images (desktop) */
+/* For the round plaque (Award 1) - make it a perfect square and a bit larger */
+.award-image-wrapper-1 {
+    width: 140px; /* Increased slightly for desktop */
+    height: 140px; /* Increased slightly for desktop */
+    margin-top: 50px;
+}
+
+/* For the trophy (Award 2) - make it significantly taller and narrower */
+.award-image-wrapper-2 {
+    width: 110px; /* Slightly wider than before to give more space for base */
+    height: 160px; /* Significantly taller for desktop to emphasize the trophy */
+    margin-top: 50px;
+}
+
+.award-description {
+    flex-grow: 1;
+}
+
+.award-description h3 {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #007bff;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.award-description p {
+    font-size: 0.95em;
+    color: #555;
+    margin-bottom: 0;
+}
+
+
+/* --- Responsive Adjustments --- */
+
+/* Tablets (landscape) and smaller desktops */
+@media (max-width: 992px) {
+    .awards-grid {
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 30px;
+    }
+
+    .achievements-heading {
+        font-size: 1.8em;
+    }
+
+    /* General default for award image wrapper on tablets */
+    .award-image-wrapper {
+        width: 140px;
+        height: 110px;
+    }
+
+    /* Specific adjustments for plaque on tablet */
+    .award-image-wrapper-1 {
+        width: 130px; /* Slightly larger for tablets */
+        height: 130px; /* Slightly larger for tablets */
+    }
+    /* Specific adjustments for trophy on tablet */
+    .award-image-wrapper-2 {
+        width: 100px; /* Slightly wider for tablets */
+        height: 150px; /* Significantly taller for tablets */
+    }
+}
+
+/* Tablets (portrait) and larger phones */
+@media (max-width: 768px) {
+    .achievements-section {
+        padding: 40px 15px;
+    }
+
+    .achievements-heading {
+        font-size: 1.6em;
+        margin-bottom: 8px;
+    }
+
+    .achievements-separator-line {
+        margin-bottom: 30px;
+    }
+
+    .awards-grid {
+        grid-template-columns: 1fr; /* Stack items vertically */
+        gap: 25px;
+    }
+
+    .award-item {
+        flex-direction: column; /* Stack image and description vertically */
+        align-items: center; /* Center items when stacked */
+        text-align: center; /* Center text for stacked layout */
+        padding: 20px;
+    }
+
+    /* General default for award image wrapper on larger phones/portrait tablets */
+    .award-image-wrapper {
+        width: 120px;
+        height: 95px;
+        margin-right: 0; /* Remove right margin when stacked */
+        margin-bottom: 15px; /* Add space below image when stacked */
+    }
+
+    /* Specific adjustments for plaque on larger phones/portrait tablets */
+    .award-image-wrapper-1 {
+        width: 110px; /* Larger for mobile */
+        height: 110px; /* Larger for mobile */
+    }
+    /* Specific adjustments for trophy on larger phones/portrait tablets */
+    .award-image-wrapper-2 {
+        width: 80px; /* Wider for mobile */
+        height: 130px; /* Taller for mobile */
+    }
+
+    .award-description h3 {
+        font-size: 1.1em;
+    }
+
+    .award-description p {
+        font-size: 0.9em;
+    }
+}
+
+/* Mobile phones */
+@media (max-width: 480px) {
+    .achievements-section {
+        padding: 30px 10px;
+    }
+
+    .achievements-heading {
+        font-size: 1.4em;
+    }
+
+    .achievements-separator-line {
+        width: 80px;
+        margin-bottom: 25px;
+    }
+
+    .award-item {
+        padding: 15px;
+    }
+
+    /* General default for award image wrapper on mobile phones */
+    .award-image-wrapper {
+        width: 100px;
+        height: 80px;
+        margin-bottom: 10px;
+    }
+
+    /* Specific adjustments for plaque on mobile phones */
+    .award-image-wrapper-1 {
+        width: 90px; /* Larger for smallest mobile */
+        height: 90px; /* Larger for smallest mobile */
+    }
+    /* Specific adjustments for trophy on mobile phones */
+    .award-image-wrapper-2 {
+        width: 70px; /* Wider for smallest mobile */
+        height: 110px; /* Taller for smallest mobile */
+    }
+
+    .award-description h3 {
+        font-size: 1em;
+    }
+
+    .award-description p {
+        font-size: 0.85em;
+    }
+}
+
+/* inquiry foam  */
+
+/* Contact Us Section Styles */
+
+
+
+
+.container {
+    display: flex;
+    flex-wrap: wrap; /* Allows sections to wrap on smaller screens */
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+/* Left Section - Owner Info */
+.left-section {
+    flex: 1; /* Takes equal space initially */
+    min-width: 300px; /* Minimum width for the left section */
+    padding: 30px;
+    background-color: #eef2f5;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 50px;
+}
+
+.owner-info {
+    text-align: center;
+}
+
+.owner-photo {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 20px;
+    border: 4px solid #007bff; /* Example border color */
+}
+
+.owner-name {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-bottom: 30px;
+    color: #007bff;
+}
+
+.contact-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.contact-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 25px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1.1em;
+    transition: background-color 0.3s ease;
+}
+
+.contact-btn i {
+    margin-right: 10px;
+}
+
+.contact-btn:hover {
+    background-color: #0056b3;
+}
+
+/* Hide WhatsApp button for desktop in the contact section */
+.whatsapp-desktop-btn {
+    display: block; /* Show by default */
+}
+
+
+/* Right Section - Inquiry Form */
+.right-section {
+    flex: 2; /* Takes more space than the left section */
+    min-width: 400px; /* Minimum width for the right section */
+    padding: 30px;
+}
+
+.inquiry-title {
+    font-size: 2.2em;
+    color: #2c3e50;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.divider {
+    border-bottom: 2px solid #ddd;
+    margin-bottom: 30px;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.service-options {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 30px;
+    flex-wrap: wrap; /* Allow buttons to wrap */
+}
+
+.service-btn {
+    padding: 12px 20px;
+    border: 1px solid #007bff;
+    border-radius: 5px;
+    background-color: #fff;
+    color: #007bff;
+    cursor: pointer;
+    font-size: 1.05em;
+    transition: all 0.3s ease;
+    white-space: nowrap; /* Prevent text wrapping inside buttons */
+}
+
+.service-btn.active,
+.service-btn:hover {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #555;
+}
+
+.form-group input[type="text"],
+.form-group input[type="tel"],
+.form-group input[type="email"],
+.form-group select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
+
+.submit-btn {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+}
+
+.submit-btn:hover {
+    background-color: #0056b3;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Fixed WhatsApp Button for Mobile/Tablet */
+.whatsapp-fixed-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #25d366;
+    color: #fff;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.2em;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    text-decoration: none;
+    display: none; /* Hidden by default, shown in media queries */
+}
+
+.whatsapp-fixed-btn:hover {
+    background-color: #128c7e;
+}
+
+
+/* Responsive Design */
+
+/* Tablet View (e.g., max-width 768px) */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column; /* Stack sections vertically */
+    }
+
+    .left-section, .right-section {
+        min-width: unset; /* Remove min-width to allow full flexibility */
+        width: 100%;
+        padding: 20px;
+    }
+
+    .owner-info {
+        padding-bottom: 20px; /* Add some space below owner info */
+    }
+
+    .contact-buttons {
+        flex-direction: row; /* Buttons side-by-side */
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .contact-btn {
+        flex: 1 1 auto; /* Allow buttons to grow and shrink */
+        margin: 5px;
+        min-width: 150px; /* Ensure buttons don't get too small */
+    }
+
+    .service-options {
+        flex-direction: column; /* Stack service buttons vertically */
+        align-items: stretch; /* Stretch buttons to full width */
+    }
+
+    .service-btn {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .whatsapp-desktop-btn {
+        display: none; /* Hide the WhatsApp button in the contact section on smaller screens */
+    }
+
+    .whatsapp-fixed-btn {
+        display: flex; /* Show the fixed WhatsApp button */
+    }
+}
+
+/* Mobile View (e.g., max-width 480px) */
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+
+    .container {
+        border-radius: 0; /* Remove border-radius for full width on mobile */
+        box-shadow: none;
+    }
+
+    .left-section, .right-section {
+        padding: 15px;
+    }
+
+    .owner-photo {
+        width: 150px;
+        height: 150px;
+    }
+
+    .owner-name {
+        font-size: 1.2em;
+    }
+
+    .contact-buttons {
+        flex-direction: column; /* Stack buttons vertically again for very small screens */
+    }
+
+    .contact-btn {
+        width: 100%;
+        margin: 5px 0;
+    }
+
+    .inquiry-title {
+        font-size: 1.8em;
+    }
+
+    .service-btn {
+        font-size: 1em;
+        padding: 10px 15px;
+    }
+
+    .whatsapp-fixed-btn {
+        width: 50px;
+        height: 50px;
+        font-size: 1.8em;
+        bottom: 15px;
+        right: 15px;
+    }
+}
+
+
+/* team insurance in one line */
+
+
+/* Milestones Section Styling */
+.milestones-section {
+    background-color: #18025B; /* Dark blue background from your image */
+    color: #fff;
+    padding: 40px 20px; /* Increased padding for better spacing */
+    text-align: center;
+    overflow: hidden;
+}
+
+
+
+.milestones-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    max-width: 1000px;
+    margin: 0 auto;
+    gap: 30px;
+}
+
+.milestone-card {
+    flex: 1;
+    min-width: 220px;
+    max-width: 280px;
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.milestone-card i {
+    font-size: 4em;
+    margin-bottom: 15px;
+    color: #fff;
+}
+
+.milestone-count {
+    font-size: 2.8em;
+    font-weight: bold;
+    margin-bottom: 5px;
+    line-height: 1.2;
+}
+
+.milestone-label {
+    font-size: 1.1em;
+    opacity: 0.9;
+}
+
+/* Responsive Adjustments for Milestones Section */
+
+/* Tablet and Smaller Desktop */
+@media (max-width: 992px) {
+    .milestones-grid {
+        justify-content: center;
+        gap: 20px;
+    }
+
+    .milestone-card {
+        min-width: 200px;
+        flex-basis: calc(50% - 40px); /* Two items per row, considering gap */
+    }
+
+    .milestone-card i {
+        font-size: 3.5em;
+    }
+
+    .milestone-count {
+        font-size: 2.4em;
+    }
+
+    .milestone-label {
+        font-size: 1em;
+    }
+}
+
+/* Mobile Devices */
+@media (max-width: 768px) {
+    .milestones-section {
+        padding: 40px 15px;
+    }
+
+    .milestones-grid {
+        flex-direction: column;
+        align-items: center;
+        gap: 25px;
+    }
+
+    .milestone-card {
+        min-width: unset;
+        width: 100%;
+        max-width: 300px;
+        padding: 15px;
+    }
+
+    .milestone-card i {
+        font-size: 3em;
+    }
+
+    .milestone-count {
+        font-size: 2em;
+    }
+
+    .milestone-label {
+        font-size: 0.95em;
+    }
+}
+
+
+/* testimonials */
+
+
+/* Customer Feedback Section (Testimonials) */
+.customer-feedback-section {
+    background-color: #f0f0f0; /* Light grey background from your image */
+    padding: 80px 20px;
+    font-family: Arial, sans-serif; /* Example font */
+}
+
+.customer-feedback-header {
+    max-width: 1200px; /* Aligns with the layout in your image */
+    margin: 0 auto 60px auto; /* Space below header */
+    display: flex;
+    flex-wrap: wrap; /* Allows text to wrap */
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 30px; /* Space between title/tag and description */
+}
+
+.customer-feedback-tag {
+    color: #18025B;
+    font-size: 2em;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    flex-basis: 100%; /* Takes full width on its own line */
+    text-align: left; /* Align tag to left */
+}
+
+.customer-feedback-title {
+    font-size: 2.5em; /* Large, bold title */
+    color: #333;
+    margin: 0;
+    line-height: 1.2;
+    flex: 1; /* Allows title to take available space */
+    min-width: 300px; /* Ensures title doesn't get too small */
+    text-align: left; /* Align title to left */
+}
+
+.customer-feedback-description {
+    font-size: 1em;
+    color: #555;
+    line-height: 1.6;
+    flex: 1; /* Allows description to take available space */
+    min-width: 300px; /* Ensures description doesn't get too small */
+    text-align: left; /* Align description to left */
+}
+
+.testimonial-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid */
+    gap: 30px;
+    max-width: 1200px; /* Max width for the grid of cards */
+    margin: 0 auto;
+}
+
+.testimonial-card {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Pushes content to top/bottom */
+    min-height: 200px; /* Ensures cards have a consistent minimum height */
+    box-sizing: border-box; /* Include padding in element's total width and height */
+    position: relative; /* Crucial for positioning the bookmark icon inside */
+}
+
+.testimonial-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.user-profile-icon {
+    font-size: 3em; /* Larger user icon */
+    color: #4a90e2; /* A shade of blue for the icon */
+    margin-right: 15px;
+}
+
+.user-info {
+    flex-grow: 1; /* Allows user info to take remaining space */
+}
+
+.user-name {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #333;
+    margin: 0 0 5px 0;
+}
+
+.user-location {
+    font-size: 0.9em;
+    color: #777;
+    margin: 0;
+}
+
+.rating-stars {
+    white-space: nowrap; /* Keep stars on one line */
+    font-size: 1em; /* Adjust star size */
+}
+
+.rating-stars .fas.fa-star,
+.rating-stars .fas.fa-star-half-alt {
+    color: #f7b923; /* Gold color for filled and half stars */
+    margin-right: 2px;
+}
+
+.rating-stars .far.fa-star {
+    color: #ccc; /* Grey color for empty stars */
+    margin-right: 2px;
+}
+
+
+.testimonial-text {
+    font-size: 0.95em;
+    color: #444;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Bookmark Icon Positioning (Updated) */
+.testimonial-card::before { /* Apply pseudo-element to the card itself for absolute positioning */
+    font-family: "Font Awesome 5 Free"; /* Ensure Font Awesome is loaded */
+    font-weight: 900; /* For solid icon */
+    content: "\f02e"; /* Unicode for fa-bookmark */
+    position: absolute;
+    top: 15px; /* Adjust top padding */
+    right: 15px; /* Adjust right padding */
+    color: #ccc; /* Grey color for bookmark */
+    font-size: 1.2em;
+    z-index: 1; /* Ensure it's above other content if needed */
+}
+
+
+/* Responsive Adjustments */
+
+/* Tablet and Smaller Desktop */
+@media (max-width: 992px) {
+    .customer-feedback-section {
+        padding: 60px 15px;
+    }
+
+    .customer-feedback-header {
+        flex-direction: column; /* Stack header elements */
+        align-items: flex-start;
+        margin-bottom: 40px;
+        gap: 15px;
+    }
+
+    .customer-feedback-title,
+    .customer-feedback-description {
+        flex: unset; /* Remove flex sizing */
+        min-width: unset; /* Remove min-width */
+        width: 100%; /* Take full width */
+        text-align: left;
+    }
+
+    .testimonial-cards-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Slightly smaller min-width */
+        gap: 25px;
+    }
+
+    .testimonial-card {
+        padding: 25px;
+    }
+
+    .testimonial-header {
+        margin-bottom: 15px;
+    }
+
+    .user-profile-icon {
+        font-size: 2.8em;
+    }
+
+    .testimonial-card::before { /* Adjust bookmark for tablet */
+        top: 12px;
+        right: 12px;
+    }
+}
+
+/* Mobile Devices */
+@media (max-width: 768px) {
+    .customer-feedback-section {
+        padding: 40px 10px;
+    }
+
+    .customer-feedback-title {
+        font-size: 2em;
+    }
+
+    .customer-feedback-description {
+        font-size: 0.95em;
+    }
+
+    .testimonial-cards-grid {
+        grid-template-columns: 1fr; /* Single column on mobile */
+        gap: 20px;
+    }
+
+    .testimonial-card {
+        padding: 20px;
+        min-height: unset; /* Allow height to adjust to content */
+    }
+
+    .user-profile-icon {
+        font-size: 2.5em;
+    }
+
+    .user-name {
+        font-size: 1.1em;
+    }
+
+    .user-location {
+        font-size: 0.85em;
+    }
+
+    .testimonial-text {
+        font-size: 0.9em;
+    }
+
+    .testimonial-card::before { /* Adjust bookmark for mobile */
+        top: 10px;
+        right: 10px;
+        font-size: 1em;
+    }
+}
+
+
+
+/* footer */
+
+
+
+
+/* Footer Specific Styles */
+.footer {
+    background-color: #1a1a40; /* Dark blue background */
+    padding: 40px 20px;
+    color: #fff;
+    font-size: 14px;
+}
+
+.footer-container {
+    display: flex;
+    flex-wrap: wrap; /* Allows sections to wrap on smaller screens */
+    justify-content: space-around; /* Distributes space between sections */
+    max-width: 1200px; /* Max width of the footer content */
+    margin: 0 auto; /* Center the footer content */
+    gap: 30px; /* Space between flex items */
+}
+
+.footer-section {
+    flex: 1; /* Allows sections to grow and shrink */
+    min-width: 280px; /* Minimum width before wrapping */
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Default alignment for left section */
+}
+
+/* Left Section */
+.footer-left {
+    align-items: flex-start; /* Aligns content to the left */
+}
+
+.footer-logo img {
+    max-width: 150px;
+    height: auto;
+    margin-bottom: 20px;
+    border-radius: 5px; /* Slightly rounded corners for the logo if desired */
+}
+
+.footer-text {
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.social-icons {
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.social-icons a {
+    color: #fff;
+    font-size: 24px;
+    margin-right: 15px;
+    transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+    color: #007bff; /* Example hover color */
+}
+
+/* Center Section */
+.footer-center {
+    align-items: flex-start; /* Aligns content to the left */
+}
+
+.footer-center h3,
+.footer-right h3 {
+    font-size: 18px;
+    margin-bottom: 20px;
+    color: #007bff; /* Highlight color for headings */
+}
+
+.contact-info a {
+    color: #fff;
+    text-decoration: none;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    transition: color 0.3s ease;
+}
+
+.contact-info a i {
+    margin-right: 10px;
+    font-size: 16px;
+}
+
+.contact-info a:hover {
+    color: #007bff;
+}
+
+/* Right Section */
+.footer-right {
+    align-items: flex-start; /* Aligns content to the left */
+}
+
+.footer-right p {
+    margin-bottom: 10px;
+}
+
+/* Buttons */
+.footer-button {
+    background-color: #007bff; /* Blue button */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    margin-top: 20px; /* Space above buttons */
+    text-decoration: none; /* For button acting as a link */
+    display: inline-block; /* Ensure padding works correctly */
+}
+
+.footer-button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+/* Responsive Adjustments */
+@media (max-width: 992px) {
+    .footer-container {
+        flex-direction: column; /* Stack sections vertically */
+        align-items: center; /* Center items when stacked */
+    }
+
+    .footer-section {
+        width: 100%; /* Full width when stacked */
+        max-width: 500px; /* Limit max width for readability */
+        text-align: center; /* Center text within sections */
+        align-items: center; /* Center alignment for content */
+        margin-bottom: 30px; /* Space between stacked sections */
+    }
+
+    .social-icons {
+        justify-content: center; /* Center social icons */
+        display: flex;
+        width: 100%;
+        gap: 15px;
+    }
+
+    .contact-info a {
+        justify-content: center; /* Center contact info links */
+    }
+
+    .footer-button {
+        width: auto; /* Allow buttons to size based on content */
+    }
+}
+
+@media (max-width: 576px) {
+    .footer {
+        padding: 30px 15px;
+    }
+
+    .footer-logo img {
+        max-width: 120px;
+    }
+
+    .footer-text,
+    .footer-center p,
+    .footer-right p {
+        font-size: 13px;
+    }
+
+    .social-icons a {
+        font-size: 20px;
+        margin-right: 10px;
+        gap: 15px;
+    }
+
+    .footer-button {
+        padding: 8px 15px;
+        font-size: 14px;
+    }
+}
+
+
+
+/* bottom legal  */
+
+
+
+
+/* NEW: Simplified and Centered Bottom Bar Styling */
+.bottom-bar {
+    background-color: #2b2b2b; /* Darker background */
+    color: #bbb; /* Lighter text for good contrast */
+    padding: 15px 20px;
+    font-size: 13px;
+    display: flex;
+    justify-content: center; /* Center content horizontally */
+    align-items: center;
+    flex-wrap: wrap; /* Allow wrapping if text is too long */
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: center; /* Center text within the bottom bar */
+}
+
+.bottom-bar-content {
+    /* This div now acts as the container for both lines of text */
+    width: 100%; /* Take full width to allow text-align to work */
+    display: flex; /* Use flexbox for vertical stacking */
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center items horizontally within the column */
+}
+
+.copyright,
+.designer-info {
+    margin: 0; /* Remove default paragraph margin */
+    white-space: nowrap; /* Keep on one line if possible */
+    line-height: 1.6; /* Adjust line height for better readability */
+}
+
+/* Responsive Adjustments for Bottom Bar */
+@media (max-width: 992px) {
+    .bottom-bar {
+        padding: 15px 15px;
+    }
+
+    .bottom-bar-content {
+        margin: 0;
+    }
+
+    .copyright,
+    .designer-info {
+        white-space: normal; /* Allow text to wrap on smaller screens */
+    }
+}
+
+@media (max-width: 576px) {
+    .bottom-bar {
+        font-size: 12px;
+    }
+}
